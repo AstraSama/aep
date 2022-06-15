@@ -1,0 +1,53 @@
+<html>
+<link rel="stylesheet" href="imc.css">
+    <div class="imc-box">
+        <h2>Calculo de IMC</h2>
+        <form>  <!--elemento para formulários-->
+            <div class="user-box">
+                <input type="number" name="" placeholder="Sua idade" required="">  <!--campo de dados digitado-->
+                <!--O elemento label representa uma legenda em uma interface do usuário-->
+            </div>
+            <div class="user-box">
+                <input type="number" class="altura" name="altura" placeholder="Sua altura em metros(Ex:1.92 para 1,92m)" required="">
+            </div>
+            <div class="user-box">
+                <input type="number" class="peso" name="peso" placeholder="Seu peso em quilos(Ex:92.2 para 92,2kg)" required="">
+            </div>
+            <div class="resposta">
+                <input type="button" class="btn" value="Responder"><br/></br>
+            </div>
+            <div class="user-box">
+                <span class="result">Resultado:</span>
+            </div>
+        </form>
+    </div>
+</html>
+
+<script type="text/javascript">
+
+    btn =document.querySelector(".btn");
+    btn.addEventListener("click", ()=>{
+        peso   = parseFloat(document.querySelector(".peso").value);
+        altura = parseFloat(document.querySelector(".altura").value);
+        result = (peso /(altura * altura)).toFixed(2);
+
+        if(result < 18.5)
+            result += " / Abaixo do peso";
+        if(result > 18.5 && result < 24.9)
+            result += " /  Peso normal";
+        if(result > 25 && result < 29.9)
+            result += " / Sobrepeso";
+        if(result > 30 && result < 34.9)
+            result += " / Obesidade de grau 1";
+        if(result > 35 && result < 39.9)
+            result += " / Obesidade de grau 2";
+        if(result > 40)
+            result += " / Obesidade de grau 3";
+        result = "IMC = " + result;
+        document.querySelector(".result").innerHTML = result;
+
+    });
+
+
+
+</script>
